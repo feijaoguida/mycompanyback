@@ -1,4 +1,22 @@
-import { Controller } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post, Request, UseGuards } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+import { AuthService } from './auth.service';
+import { LoginDto } from './dto/login.dto';
+import { LocalAuthGuard } from './guards/local-auth.guard';
+import { AuthRequest } from './models/AuthRequest';
 
-@Controller('auth')
-export class AuthController {}
+@Controller()
+export class AuthController {
+  constructor(private readonly authService: AuthService){}
+
+  @ApiTags("Users")
+  @Post('login')
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(LocalAuthGuard)
+  login(@Body() loginDto: LoginDto, @Request() req: AuthRequest) {
+    
+    return this.authService.login(req.user)
+  }
+}
+
+
