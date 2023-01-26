@@ -42,11 +42,23 @@ export class UsersService {
     return this.prismaService.user.findUnique({ where: { id }});
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async update(id: string, updateUserDto: UpdateUserDto) {
+    const userExist = await this.findOne(id)
+    if (!userExist) {
+      console.log("This User not existe")
+      return
+    }
+
+    return await this.prismaService.user.update({ where: { id }, data: updateUserDto})
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: string) {
+    const userExist = await this.findOne(id)
+    if (!userExist) {
+      console.log("This User not existe")
+      return
+    }
+
+    return await this.prismaService.user.delete({ where: { id }})
   }
 }

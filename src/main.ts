@@ -16,10 +16,13 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-  .setTitle('Sample example')
-  .setDescription('Sample API description')
+  .setTitle('MyCompany APP')
+  .setDescription('Api puclica para acesso e testes a dados do APP myCompany.')
+  .addBearerAuth()
   .setVersion('1.0')
-  .build();
+  .build()
+
+  
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
