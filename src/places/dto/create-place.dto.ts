@@ -2,11 +2,6 @@ import { ApiProperty } from "@nestjs/swagger";
 import { Type } from "class-transformer";
 import { IsNumber, IsString } from "class-validator";
 
-class CompanyProperty {
-  @ApiProperty()
-  @IsString()
-  id: string
-}
 export class CreatePlaceDto{
   @ApiProperty()
   @IsString()
@@ -31,9 +26,4 @@ export class CreatePlaceDto{
   @ApiProperty()
   @IsString()
   company_id: string;
-
-  @ApiProperty()
-  @Type(() => CompanyProperty)
-  @IsString()
-  company: CompanyProperty;
 }

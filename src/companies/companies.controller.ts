@@ -26,6 +26,11 @@ export class CompaniesController {
     return this.companiesService.findOne(id);
   }
 
+  @Get('user/:user_id')
+  findByUser(@Param('user_id') user_id: string) {
+    return this.companiesService.findByUser(user_id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCompanyDto: UpdateCompanyDto) {
     return this.companiesService.update(id, updateCompanyDto);

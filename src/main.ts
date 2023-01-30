@@ -16,7 +16,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
   .setTitle('MyCompany APP')
-  .setDescription('Api puclica para acesso e testes a dados do APP myCompany.')
+  .setDescription('Api publica para acesso e testes a dados do APP myCompany.')
   .addBearerAuth()
   .setVersion('1.0')
   .build()

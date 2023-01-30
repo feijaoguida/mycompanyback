@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
+import { User } from 'src/users/entities/user.entity';
 import { PrismaService } from '../prisma.service';
 import { CreateCompanyDto } from './dto/create-company.dto';
 import { UpdateCompanyDto } from './dto/update-company.dto';
@@ -30,7 +31,14 @@ export class CompaniesService {
   findAll() {
     return this.prismaService.company.findMany({
       include: {
-        user: true,
+        user: {
+          select: {
+            id: true,
+            name: true,
+            email: true
+          },
+         },
+        place: true,
       }
     });
   }
@@ -39,7 +47,30 @@ export class CompaniesService {
     return this.prismaService.company.findUnique({
       where: { id },
       include: {
-        user: true
+        user: {
+          select: {
+            id: true,
+            name: true,
+            email: true
+          },
+         },
+        place: true
+      }
+    });
+  }
+
+  findByUser(user_id: string) {
+    return this.prismaService.company.findMany({
+      where: { user_id },
+      include: {
+        user: {
+          select: {
+            id: true,
+            name: true,
+            email: true
+          },
+         },
+        place: true
       }
     });
   }

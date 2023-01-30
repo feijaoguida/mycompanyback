@@ -1,13 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { Prisma } from "@prisma/client"
-import { Type } from "class-transformer"
-import { IsArray, IsEmail, IsOptional, isString, IsString, Matches, MaxLength, MinLength } from "class-validator"
+import { IsString } from "class-validator"
 
-class UserProperty {
-  @ApiProperty()
-  @IsString()
-  id: string
-}
+
 export class CreateCompanyDto {
   @ApiProperty()
   @IsString()
@@ -24,12 +18,6 @@ export class CreateCompanyDto {
   @ApiProperty()
   @IsString()
   user_id: string
-  
-  @ApiProperty()
-  @Type(() => UserProperty)
-  @IsString()
-  user: UserProperty
-
 }
 
 
