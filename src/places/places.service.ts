@@ -32,6 +32,22 @@ export class PlacesService {
     return this.prismaService.place.findMany();
   }
 
+  findByCompany(company_id: string) {
+    return this.prismaService.place.findMany({
+      where: { company_id },
+      include: {
+        company: {
+          select: {
+            id: true,
+            name: true,
+            cnpj: true,
+            website: true
+          },
+         },
+      }
+    });
+  }
+
   findOne(id: string) {
     return this.prismaService.place.findUnique({ where: { id }});
   }

@@ -23,6 +23,11 @@ export class PlacesController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.placesService.findOne(id);
+  
+  }
+  @Get('company/:company_id')
+  findByCompany(@Param('company_id') company_id: string) {
+    return this.placesService.findByCompany(company_id);
   }
 
   @Patch(':id')

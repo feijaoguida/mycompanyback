@@ -9,8 +9,6 @@ import { IsPublic } from 'src/auth/decorators/is-public.decorator';
 @Controller('users')
 export class UsersPubliController {
   constructor(private readonly usersService: UsersService) {}
-
-
 }
 @ApiBearerAuth()
 @ApiTags("Users")
