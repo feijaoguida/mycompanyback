@@ -63,5 +63,6 @@ $ npm run test:cov
 - Author - [Roseweltty B. Guida](https://linktr.ee/rbgsolucoes)
 
 ## License
-
+This is a challenge by [Coodesh](https://coodesh.com/)
+  
 MyCompany is [MIT licensed](LICENSE).
